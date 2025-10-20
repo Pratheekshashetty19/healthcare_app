@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="text-center mb-5"><i class="fas fa-tachometer-alt icon"></i>Dashboard</h1>
+    {% if role == 'patient' %}
+      <div class="card p-4 mb-4">
+        <h3><i class="fas fa-user-injured icon"></i>Patient Options</h3>
+        <p>Manage your health records and appointments.</p>
+        <a href="{{ url_for('profile') }}" class="btn btn-custom me-3"><i class="fas fa-id-card"></i> View Profile</a>
+        <a href="#" class="btn btn-outline-primary"><i class="fas fa-calendar-plus"></i> Book Appointment</a>
+      </div>
+    {% elif role == 'doctor' %}
+      <div class="card p-4 mb-4">
+        <h3><i class="fas fa-user-md icon"></i>Doctor Options</h3>
+        <p>Handle patient appointments and records.</p>
+        <a href="{{ url_for('profile') }}" class="btn btn-custom me-3"><i class="fas fa-id-card"></i> View Profile</a>
+        <a href="#" class="btn btn-outline-primary"><i class="fas fa-calendar-check"></i> Manage Appointments</a>
+      </div>
+    {% elif role == 'admin' %}
+      <div class="card p-4 mb-4">
+        <h3><i class="fas fa-cogs icon"></i>Admin Options</h3>
+        <p>Oversee users and system settings.</p>
+        <a href="{{ url_for('add_user') }}" class="btn btn-custom me-3"><i class="fas fa-user-plus"></i> Add User</a>
+        <a href="#" class="btn btn-outline-primary"><i class="fas fa-users"></i> Manage Users</a>
+      </div>
+    {% endif %}
+    <div class="text-center">
+      <a href="{{ url_for('logout') }}" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </div>
+</body>
+</html>
