@@ -11,21 +11,21 @@ A web application designed to provide healthcare services online, including doct
 
 ## Technologies Used
 
-- **Frontend**: HTML, CSS, JavaScript (React)
-- **Backend**: Flask (Python) / Node.js
-- **Database**: SQLite / MySQL / MongoDB
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Flask (Python)
+- **Database**: SQLite
 
 ## Setup Instructions
 
 ### Prerequisites
 
 - Python 3.x
-- Node.js and npm
 
-### Backend Setup
+### Setup Steps
 
 1. Clone the repository:
 
    ```bash
    git clone https://github.com/Pratheekshashetty19/healthcare_app.git
    cd healthcare_app
+
