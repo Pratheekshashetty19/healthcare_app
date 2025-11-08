@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="mb-4 text-center text-dark"><i class="fas fa-user-shield"></i> **Admin Panel**</h1>
+    <h2 class="mb-5 text-center text-muted">Welcome, {{ current_user.name }}!</h2>
+    
+    <div class="row g-4">
+        
+        <div class="col-md-4">
+            <div class="card custom-card dashboard-card bg-primary text-white">
+                <div class="card-body">
+                    <i class="fas fa-user-md"></i>
+                    <h5 class="card-title">Add New Doctor</h5>
+                    <p class="card-text">Total Doctors: **{{ doctor_count }}**</p>
+                    <a href="{{ url_for('add_user', role_type='doctor') }}" class="btn btn-info btn-glow mt-2">
+                        <i class="fas fa-plus"></i> Register Doctor
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card custom-card dashboard-card bg-danger text-white">
+                <div class="card-body">
+                    <i class="fas fa-user-tie"></i>
+                    <h5 class="card-title">Add New Admin</h5>
+                    <p class="card-text">Total Admins: **{{ User.query.filter_by(role='admin').count() }}**</p>
+                    <a href="{{ url_for('add_user', role_type='admin') }}" class="btn btn-info btn-glow mt-2">
+                        <i class="fas fa-plus"></i> Register Admin
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+    <div class="card custom-card dashboard-card bg-success text-white">
+        <div class="card-body">
+            <i class="fas fa-users"></i>
+            <h5 class="card-title">User Management</h5>
+            <p class="card-text">Total Users: **{{ (doctor_count + patient_count + 1) }}**</p>
+            <a href="{{ url_for('admin_view_users') }}" class="btn btn-light text-success btn-glow mt-2">
+                <i class="fas fa-search"></i> View All Users
+            </a>
+        </div>
+    </div>
+</div>
+
+        <div class="col-md-4">
+            <div class="card custom-card dashboard-card bg-light text-dark">
+                <div class="card-body">
+                    <i class="fas fa-database text-info"></i>
+                    <h5 class="card-title">System Logs</h5>
+                    <p class="card-text">Review application activities and audit trails.</p>
+                    <a href="#" class="btn btn-outline-info btn-glow mt-2">
+                        <i class="fas fa-search"></i> View Logs
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card custom-card dashboard-card bg-dark text-white">
+                <div class="card-body">
+                    <i class="fas fa-cog text-warning"></i>
+                    <h5 class="card-title">Configuration</h5>
+                    <p class="card-text">Manage global application settings.</p>
+                    <a href="#" class="btn btn-warning btn-glow mt-2">
+                        <i class="fas fa-sliders-h"></i> Settings
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-center dashboard-container" style="min-height: 80vh;">
+    <div class="col-md-6">
+        <div class="card custom-card">
+            <div class="card-header-gradient card-danger-gradient text-center">
+                <h2><i class="fas fa-user-tag"></i> Add New {{ role_type.capitalize() }}</h2>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Temporary Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-glow w-100">
+                        <i class="fas fa-plus-circle"></i> Create {{ role_type.capitalize() }}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

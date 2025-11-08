@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container dashboard-container">
+    <h1 class="mb-5 text-center" style="color:#007bff;"><i class="fas fa-calendar-alt"></i> **Manage My Schedule**</h1>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card custom-card">
+                <div class="card-header-gradient card-primary-gradient text-white">
+                    <h4 class="mb-0"><i class="fas fa-ban"></i> Block Time Slot</h4>
+                </div>
+                <div class="card-body p-4">
+    <form method="POST">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="date" class="form-label">Date (Required)</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="time" class="form-label">Time (Optional - Leave blank for full day)</label>
+                <input type="time" class="form-control" id="time" name="time" step="1800">
+            </div>
+        </div>
+        
+        <p class="text-muted small mt-2">
+            **To block an entire day, only select the Date and leave the Time field blank.**
+        </p>
+
+        <div class="d-grid gap-2 mt-4">
+            <button type="submit" name="action" value="block" class="btn btn-danger btn-glow">
+                <i class="fas fa-calendar-times"></i> Block Slot/Day
+            </button>
+            <button type="submit" name="action" value="unblock" class="btn btn-success btn-glow">
+                <i class="fas fa-calendar-check"></i> Unblock Slot/Day
+            </button>
+        </div>
+    </form>
+</div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card custom-card">
+                <div class="card-header-gradient card-danger-gradient text-white">
+                    <h4 class="mb-0"><i class="fas fa-list-alt"></i> Currently Blocked Slots</h4>
+                </div>
+                <div class="card-body">
+                    {% if blocked_slots %}
+                        <ul class="list-group list-group-flush">
+                            {% for slot in blocked_slots %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ slot.date_time.strftime('%Y-%m-%d %H:%M') }}
+                                    <span class="badge bg-danger">BLOCKED</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="text-center text-muted">No time slots are currently blocked in your schedule.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

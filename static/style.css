@@ -1,0 +1,121 @@
+/* Custom CSS for Modern, Stylish UI */
+
+:root {
+    --primary-gradient: linear-gradient(45deg, #007bff, #0056b3); /* Blue */
+    --success-gradient: linear-gradient(45deg, #28a745, #1e7e34); /* Green */
+    --danger-gradient: linear-gradient(45deg, #dc3545, #a71d2a); /* Red */
+    --info-gradient: linear-gradient(45deg, #17a2b8, #0f6674); /* Cyan */
+    --light-bg: #f8f9fa;
+    --dark-bg: #343a40;
+}
+
+body {
+    background: var(--light-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Global Card Styling --- */
+.custom-card {
+    border: none;
+    border-radius: 1.5rem; /* More rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Soft, deep shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Important for gradient headers */
+}
+
+.custom-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.card-header-gradient {
+    color: white;
+    padding: 1.5rem;
+    border-bottom: none;
+    border-radius: 1.5rem 1.5rem 0 0;
+    font-weight: 600;
+}
+
+/* Gradient variations for dashboards/forms */
+.card-primary-gradient { background: var(--primary-gradient); }
+.card-success-gradient { background: var(--success-gradient); }
+.card-danger-gradient { background: var(--danger-gradient); }
+.card-info-gradient { background: var(--info-gradient); }
+
+/* --- Dashboard Specifics --- */
+.dashboard-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: linear-gradient(135deg, #e0f7fa 0%, #f1f8e9 100%); /* Light background gradient */
+    min-height: 100vh;
+}
+
+/* Custom dashboard cards */
+.dashboard-card {
+    min-height: 180px;
+    text-align: center;
+}
+
+.dashboard-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.dashboard-card i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+/* --- Button Styling (Glow Effect) --- */
+.btn-glow {
+    position: relative;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary.btn-glow { background-image: var(--primary-gradient); border: none; }
+.btn-success.btn-glow { background-image: var(--success-gradient); border: none; }
+.btn-info.btn-glow { background-image: var(--info-gradient); border: none; }
+
+/* The actual "glow" effect */
+.btn-glow:hover {
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.8), 0 0 25px rgba(0, 123, 255, 0.5); /* Blue glow */
+    transform: translateY(-2px);
+}
+.btn-success.btn-glow:hover {
+    box-shadow: 0 0 15px rgba(40, 167, 69, 0.8), 0 0 25px rgba(40, 167, 69, 0.5); /* Green glow */
+}
+
+/* --- Form Styling --- */
+.form-control {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+/* --- Navbar Styling --- */
+.navbar-custom {
+    background-color: var(--dark-bg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: white !important;
+}
+
+/* --- Flash Messages --- */
+.alert {
+    border-radius: 0.75rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}

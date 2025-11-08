@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container dashboard-container">
+    <h1 class="mb-5 text-center" style="color:#17a2b8;"><i class="fas fa-pills"></i> **My Prescription History**</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card custom-card">
+                <div class="card-header-gradient card-info-gradient">
+                    <h4 class="mb-0 text-white">All Issued Prescriptions</h4>
+                </div>
+                
+                <div class="card-body p-4">
+                    {% if prescriptions %}
+                        <div class="accordion" id="prescriptionAccordion">
+                            {% for prescription in prescriptions %}
+                                <div class="accordion-item custom-card mb-3">
+                                    <h2 class="accordion-header" id="heading{{ prescription.id }}">
+                                        <button class="accordion-button {% if not loop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ prescription.id }}" aria-expanded="{% if loop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ prescription.id }}">
+                                            <i class="fas fa-medkit me-3 text-info"></i> 
+                                            <strong>{{ prescription.medication }}</strong> - Prescribed on {{ prescription.date_prescribed.strftime('%Y-%m-%d') }}
+                                        </button>
+                                    </h2>
+                                    <div id="collapse{{ prescription.id }}" class="accordion-collapse collapse {% if loop.first %}show{% endif %}" aria-labelledby="heading{{ prescription.id }}" data-bs-parent="#prescriptionAccordion">
+                                      <div class="accordion-body">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Prescribed By:</strong> Dr. {{ prescription.doctor.name }}</li>
+        <li class="list-group-item text-center">
+            <a href="{{ url_for('uploaded_file', filename=prescription.file_path) }}" target="_blank" class="btn btn-success btn-glow mt-3">
+                <i class="fas fa-download"></i> Download Prescription File
+            </a>
+            <small class="d-block text-muted mt-2">{{ prescription.file_path }}</small>
+        </li>
+    </ul>
+</div>  
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning text-center" role="alert">
+                            <i class="fas fa-exclamation-triangle"></i> You have no prescriptions on record yet.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

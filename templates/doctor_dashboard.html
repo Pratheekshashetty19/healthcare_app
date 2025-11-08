@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="mb-4 text-center" style="color:#007bff;"><i class="fas fa-user-md"></i> **Doctor Dashboard**</h1>
+    <h2 class="mb-5 text-center text-muted">Hello, Dr. {{ current_user.name }}!</h2>
+    
+    <div class="row g-4">
+        <div class="col-md-4">
+    <div class="card custom-card dashboard-card card-success-gradient text-white">
+        <div class="card-body">
+            <i class="fas fa-id-card-alt"></i>
+            <h5 class="card-title">My Profile</h5>
+            <p class="card-text">View details and manage security settings.</p>
+            <a href="{{ url_for('profile') }}" class="btn btn-light text-success btn-glow mt-2">
+                <i class="fas fa-edit"></i> View/Update
+            </a>
+        </div>
+    </div>
+</div>
+    <div class="col-md-4">
+    <div class="card custom-card dashboard-card bg-info text-white">
+        <div class="card-body">
+            <i class="fas fa-check-circle"></i>
+            <h5 class="card-title">Confirmed Today</h5>
+            <p class="card-text">Total Appointments: **{{ confirmed_today_count }}**</p>
+            
+            <a href="{{ url_for('doctor_appointments') }}" class="btn btn-light text-info btn-glow mt-2">
+                <i class="fas fa-list-ul"></i> Review Schedule
+            </a>
+        </div>
+    </div>
+</div>    
+
+        <div class="col-md-4">
+    <div class="card custom-card dashboard-card card-success-gradient text-white">
+        <div class="card-body">
+            <i class="fas fa-user-injured"></i>
+            <h5 class="card-title">My Patients</h5>
+            <p class="card-text">Access your list of confirmed patients.</p>
+            <a href="{{ url_for('doctor_patients') }}" class="btn btn-light text-success btn-glow mt-2">
+                <i class="fas fa-search"></i> View Patients
+            </a>
+        </div>
+    </div>
+</div>
+
+        <div class="col-md-4">
+            <div class="card custom-card dashboard-card card-danger-gradient text-white">
+                <div class="card-body">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h5 class="card-title">Manage Appointments</h5>
+                    <p class="card-text">Review pending requests and prescriptions.</p>
+                    <a href="{{ url_for('doctor_appointments') }}" class="btn btn-light text-danger btn-glow mt-2">
+                        <i class="fas fa-cogs"></i> Actions
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+    <div class="card custom-card dashboard-card card-primary-gradient text-white">
+        <div class="card-body">
+            <i class="fas fa-calendar-times"></i>
+            <h5 class="card-title">Manage Calendar</h5>
+            <p class="card-text">Block out unavailable dates and times.</p>
+            <a href="{{ url_for('manage_schedule') }}" class="btn btn-light text-primary btn-glow mt-2">
+                <i class="fas fa-edit"></i> Edit Schedule
+            </a>
+        </div>
+    </div>
+</div>
+        
+    </div>
+</div>
+{% endblock %}

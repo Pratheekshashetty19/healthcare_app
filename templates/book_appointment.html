@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container dashboard-container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card custom-card">
+                <div class="card-header-gradient card-primary-gradient text-center">
+                    <h2><i class="fas fa-calendar-plus"></i> Request New Appointment</h2>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="doctor_id" class="form-label">Select Doctor</label>
+                            <select class="form-select form-control" id="doctor_id" name="doctor_id" required>
+                                <option value="" selected disabled>Choose a Doctor</option>
+                                {% for doctor in doctors %}
+                                    <option value="{{ doctor.id }}">{{ doctor.name }} ({{ doctor.email }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="date" class="form-label">Date</label>
+                                <input type="date" class="form-control" id="date" name="date" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="time" class="form-label">Time</label>
+                                <input type="time" class="form-control" id="time" name="time" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="reason" class="form-label">Reason for Visit</label>
+                            <textarea class="form-control" id="reason" name="reason" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-glow w-100">
+                            <i class="fas fa-paper-plane"></i> Submit Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
